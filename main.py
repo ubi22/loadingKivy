@@ -17,6 +17,7 @@ from kivymd.uix.dialog import MDDialog
 from kivymd.app import MDApp
 from kivy.uix.modalview import ModalView
 from kivymd.uix.spinner import MDSpinner
+from kivy.animation import Animation
 from kivymd.uix.progressbar import MDProgressBar
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.list import ThreeLineIconListItem
@@ -32,13 +33,18 @@ class Content(MDBoxLayout):
 class MDLoading(MDApp):
     dialog = None
 
+    def on_start(self):
+        button = self.root.ids.niga
+        animation = Animation(opacity=0, duration=0.5)
+        animation.start(button)
+
     def build(self):
         return Builder.load_file('kivy.kv')
 
     def Threading_start(self):
         threading.Thread(target=self.loading).start()
 
-    def loading(self):
+    def loading(self, what):
         data = ['1','1','1','1','1','1','1']
         print("adada")
         for i in range(len(data)):
@@ -60,6 +66,12 @@ class MDLoading(MDApp):
         if i+1 == len(data):
             self.dialog.dismiss()
         # self.root.ids.spinner.active = True
+
+    def spinner(self):
+        button = self.root.ids.niga
+        animation = Animation(opacity=1, duration=0.5)
+        animation.start(button)
+        self.root.ids.spinner.active = "True"
 
 
 MDLoading().run()

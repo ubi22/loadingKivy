@@ -1,11 +1,26 @@
-MDScreen:
-    MDSpinner:
-        id: spinner
-        size_hint: None, None
-        size: dp(46), dp(46)
-        pos_hint: {'center_x': .5, 'center_y': .5}
-        active: False
-    MDRaisedButton:
-        text: "Нажми"
-        on_press: app.Threading_start()
-
+ScreenManager:
+#    MDScreen:
+#        name: 'dialog'
+#        MDRaisedButton:
+#            text: "Нажми"
+#            pos_hint: {'center_x':.5, 'center_y':.5}
+#            on_press: app.Threading_start()
+    MDScreen:
+        name: 'spinner'
+        MDSpinner:
+            id: spinner
+            size_hint: None, None
+            size: dp(125), dp(125)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            active: False
+            palette:
+                [0.28627450980392155, 0.8431372549019608, 0.596078431372549, 1],             [0.3568627450980392, 0.3215686274509804, 0.8666666666666667, 1],             [0.8862745098039215, 0.36470588235294116, 0.592156862745098, 1],             [0.8784313725490196, 0.9058823529411765, 0.40784313725490196, 1]
+        MDLabel:
+            id: niga
+            halign: "center"
+            text: 'Загрузка...\n5/10'
+            pos_hint: {'center_x':.5, 'center_y':.5}
+        MDRaisedButton:
+            text: "Нажми"
+            pos_hint: {'center_x':.5, 'center_y':.2}
+            on_press: app.spinner()
