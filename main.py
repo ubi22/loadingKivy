@@ -33,10 +33,10 @@ class Content(MDBoxLayout):
 class MDLoading(MDApp):
     dialog = None
 
-    def on_start(self):
-        button = self.root.ids.niga
-        animation = Animation(opacity=0, duration=0.5)
-        animation.start(button)
+    # def on_start(self):
+    #     button = self.root.ids.niga
+    #     animation = Animation(opacity=0, duration=0.5)
+    #     animation.start(button)
 
     def build(self):
         return Builder.load_file('kivy.kv')
@@ -44,7 +44,7 @@ class MDLoading(MDApp):
     def Threading_start(self):
         threading.Thread(target=self.loading).start()
 
-    def loading(self, what):
+    def loading(self):
         data = ['1','1','1','1','1','1','1']
         print("adada")
         for i in range(len(data)):
